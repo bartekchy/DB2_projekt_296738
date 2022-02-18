@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Lista Pokoi</title>
+</head>
+<body>
+<div layout:fragment="buttons">
+    <a th:href="@{/room/create}" class="btn btn-sm btn-success" role="button">dodaj</a>
+    <a th:href="@{/}" class="btn btn-sm btn-primary" role="button">wróć</a>
+</div>
+<section layout:fragment="content">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Numer</th>
+            <th scope="col">Ilość miejsc</th>
+            <th scope="col">Cena</th>
+            <th scope="col">Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="room : ${rooms}">
+            <th th:text="${room.id}"></th>
+            <td th:text="${room.number}"></td>
+            <td th:text="${room.capacity}"></td>
+            <td th:text="${room.price}"></td>
+            <td class="shrink">
+                <a th:href="@{/room/update/__${room.id}__}" class="btn btn-sm btn-success" role="button">zmień</a>
+                <a th:href="@{/room/delete/__${room.id}__}" class="btn btn-sm btn-danger" role="button">usuń</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

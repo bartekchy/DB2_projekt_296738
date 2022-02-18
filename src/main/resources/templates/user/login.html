@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Logowanie</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <form id="signin" action="/login" autocomplete="off" method="post">
+        <p2> Logowanie</p2>
+        <input type="text" id="username" name="username" placeholder="username"/>
+        <input type="password" id="password" name="password" placeholder="password"/>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit" value="Submit">&#9658;</button>
+        <p>forgot your password? <a href="#">click here</a></p>
+    </form>
+</section>
+</body>
+</html>

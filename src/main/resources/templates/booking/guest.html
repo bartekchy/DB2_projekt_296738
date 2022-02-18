@@ -1,0 +1,23 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Dodaj gościa</title>
+</head>
+<body>
+<h1 layout:fragment="title">Dodaj gościa</h1>
+<section layout:fragment="content">
+    <form action="#" th:action="@{/booking/guest/__${booking.id}__}" method="post">
+        <div class="form-group">
+            <label>Gość</label>
+            <select name="guest">
+                <option th:each="guest : ${guests}" th:value="${guest.id}" th:text="${guest.forename}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Dodaj</button>
+        <div class="float-end">
+            <a th:href="@{/booking/read/__${booking.id}__}" class="btn btn-danger" role="button">Anuluj</a>
+        </div>
+    </form>
+</section>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Rezerwacja</title>
+</head>
+<body>
+<h1 layout:fragment="title">Zmień status</h1>
+<section layout:fragment="content">
+    <form action="#" th:action="@{/booking/status/__${booking.id}__}" th:object="${booking}" method="post">
+        <div class="form-group">
+            <label>Status</label>
+            <select th:field="*{status}">
+                <option th:value="'BOOKING'" th:text="BOOKING"></option>
+                <option th:value="'CHECK_IN'" th:text="CHECK_IN"></option>
+                <option th:value="'CHECK_OUT'" th:text="CHECK_OUT"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Dodaj</button>
+        <div class="float-end">
+            <a th:href="@{/booking/read/__${booking.id}__}" class="btn btn-danger" role="button">Anuluj</a>
+        </div>
+    </form>
+</section>
+</body>
+</html>

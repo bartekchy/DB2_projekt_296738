@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Usuwanie pokoju</title>
+</head>
+<body>
+<h1 layout:fragment="title" th:text="| Czy na pewno chcesz usunac pokój : ${room.number}?|"></h1>
+<section layout:fragment="content">
+    <form action="#" th:action="@{/room/delete/__${room.id}__}" method="post">
+        <button type="submit" class="btn btn-success">Tak</button>
+        <div class="float-end">
+            <a th:href="@{/room/list}" class="btn btn-danger" role="button">Nie</a>
+        </div>
+    </form>
+</section>
+</body>
+</html>

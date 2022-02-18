@@ -1,0 +1,24 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Rezerwacja</title>
+</head>
+<body>
+<h1 layout:fragment="title">Dodaj Rezerwacje</h1>
+<section layout:fragment="content">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col" >pokój</th>
+            <th scope="col" th:each="date : ${dates}" th:text="${date}">status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="items : ${data}">
+            <td th:each="item : ${items}" th:text="${item}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Edytuj dane gościa</title>
+</head>
+<body>
+<h1 layout:fragment="title">Edytuj dane gościa</h1>
+<section layout:fragment="content">
+    <form action="#" th:action="@{/guest/update/__${guest.id}__}" th:object="${guest}" method="post">
+        <div class="form-group">
+        <label>Imie</label>
+        <input class="form-control" placeholder="Imie" th:field="*{forename}">
+    </div>
+        <div class="form-group">
+            <label>Nazwisko</label>
+            <textarea class="form-control markdown" placeholder="Nazwisko" th:field="*{surname}"></textarea>
+        </div>
+        <div class="form-group">
+            <label>pesel</label>
+            <textarea class="form-control markdown" placeholder="pesel" th:field="*{pesel}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Dodaj</button>
+        <div class="float-end">
+            <a th:href="@{/guest/list}" class="btn btn-danger" role="button">Anuluj</a>
+        </div>
+    </form>
+</section>
+</body>
+</html>

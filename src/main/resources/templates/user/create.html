@@ -1,0 +1,41 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Dodaj pracownika</title>
+</head>
+<body>
+<h1 layout:fragment="title">Dodaj pracownika</h1>
+<section layout:fragment="content">
+    <form action="#" th:action="@{/create}" th:object="${user}" method="post">
+        <div class="form-group">
+            <label>Login</label>
+            <input class="form-control" placeholder="Wpisz login" th:field="*{username}">
+        </div>
+        <div class="form-group">
+            <label>Hasło</label>
+            <textarea class="form-control markdown" placeholder="Wpisz hasło" th:field="*{password}"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Imie</label>
+            <textarea class="form-control markdown" placeholder="Wpisz Imie" th:field="*{forename}"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Nazwisko</label>
+            <textarea class="form-control markdown" placeholder="Wpisz Nazwisko" th:field="*{surname}"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Rola</label>
+            <select th:field="*{role}">
+                <option th:value="'MANAGER'" th:text="MANAGER"></option>
+                <option th:value="'RECEPTIONIST'" th:text="RECEPTIONIST"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Utwórz</button>
+        <div class="float-end">
+            <a th:href="@{/list}" class="btn btn-danger" role="button">Anuluj</a>
+        </div>
+
+    </form>
+</section>
+</body>
+</html>

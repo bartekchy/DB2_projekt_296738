@@ -1,0 +1,29 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Dodaj pokoj</title>
+</head>
+<body>
+<h1 layout:fragment="title">Dodaj pokój</h1>
+<section layout:fragment="content">
+    <form action="#" th:action="@{/room/create}" th:object="${room}" method="post">
+        <div class="form-group">
+            <label>numer</label>
+            <input class="form-control" placeholder="Numer" th:field="*{number}">
+        </div>
+        <div class="form-group">
+            <label>Ilość miejsc</label>
+            <textarea class="form-control markdown" placeholder="Ilość miejsc" th:field="*{capacity}"></textarea>
+        </div>
+        <div class="form-group">
+            <label>cena</label>
+            <textarea class="form-control markdown" placeholder="Cena" th:field="*{price}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Dodaj</button>
+        <div class="float-end">
+            <a th:href="@{/room/list}" class="btn btn-danger" role="button">Anuluj</a>
+        </div>
+    </form>
+</section>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Rezerwacja</title>
+</head>
+<body>
+<h1 layout:fragment="title">Dodaj Rezerwacje</h1>
+<section layout:fragment="content">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">pokój</th>
+            <th scope="col">status</th>
+            <th scope="col">od</th>
+            <th scope="col">do</th>
+            <th scope="col">cena</th>
+            <th scope="col">Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="b : ${booking}">
+            <td th:text="${b.id}"></td>
+            <td th:text="${b.room?.number}"></td>
+            <td th:text="${b.status}"></td>
+            <td th:text="${b.begin}"></td>
+            <td th:text="${b.end}"></td>
+            <td th:text="${b.price}"></td>
+            <td class="shrink">
+                <a th:href="@{/booking/read/__${b.id}__}" class="btn btn-sm btn-success" role="button">otwórz</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

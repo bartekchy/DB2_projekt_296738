@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Lista pracowników</title>
+</head>
+<body>
+<div layout:fragment="buttons">
+    <a th:href="@{/create}" class="btn btn-sm btn-success" role="button">dodaj</a>
+    <a th:href="@{/}" class="btn btn-sm btn-primary" role="button">wróć</a>
+</div>
+<section layout:fragment="content">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Login</th>
+            <th scope="col">Imie</th>
+            <th scope="col">Nazwisko</th>
+            <th scope="col">Rola</th>
+            <th scope="col">Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <th th:text="${user.id}"></th>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.forename}"></td>
+                <td th:text="${user.surname}"></td>
+                <td th:text="${user.role}"></td>
+                <td class="shrink">
+                    <a th:href="@{/update/__${user.id}__}" class="btn btn-sm btn-success" role="button">zmień</a>
+                    <a th:href="@{/delete/__${user.id}__}" class="btn btn-sm btn-danger" role="button">usuń</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+</body>
+</html>

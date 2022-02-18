@@ -1,0 +1,23 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Rezerwacja</title>
+</head>
+<body>
+<h1 layout:fragment="title">Wybierz pokój</h1>
+<section layout:fragment="content">
+    <form action="#" th:action="@{/booking/room/__${booking.id}__}" th:object="${booking}" method="post">
+        <div class="form-group">
+            <label>Pokój</label>
+            <select th:field="*{room}">
+                <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.number}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Dodaj</button>
+        <div class="float-end">
+            <a th:href="@{/guest/list}" class="btn btn-danger" role="button">Anuluj</a>
+        </div>
+    </form>
+</section>
+</body>
+</html>

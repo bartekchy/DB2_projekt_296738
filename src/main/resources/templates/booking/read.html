@@ -1,0 +1,56 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Rezerwacja</title>
+</head>
+<body>
+<h1 layout:fragment="title">Rezerwacja</h1>
+<section layout:fragment="content">
+    <div>
+        <h2>ID</h2>
+        <p th:text="${booking.id}"></p>
+        <h2>room</h2>
+        <p th:text="${booking.room?.number}"></p>
+        <h2>guests</h2>
+        <table class="table">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Imie</th>
+                <th scope="col">Nazwisko</th>
+                <th scope="col">PESEL</th>
+                <th scope="col">Akcje</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="guest : ${booking.guests}">
+                <th th:text="${guest.id}"></th>
+                <td th:text="${guest.forename}"></td>
+                <td th:text="${guest.surname}"></td>
+                <td th:text="${guest.pesel}"></td>
+                <td>
+                    <a th:href="@{/booking/delguest/__${booking.id}__/__${guest.id}__}" class="btn btn-sm btn-danger" role="button">usuń</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <h2>status</h2>
+        <p th:text="${booking.status}"></p>
+        <h2>begin</h2>
+        <p th:text="${booking.begin}"></p>
+        <h2>end</h2>
+        <p th:text="${booking.end}"></p>
+        <h2>price</h2>
+        <p th:text="${booking.price}"></p>
+
+        <p class="shrink">
+            <a th:href="@{/booking/date/__${booking.id}__}" class="btn btn-sm btn-success" role="button">zmień date</a>
+            <a th:href="@{/booking/room/__${booking.id}__}" class="btn btn-sm btn-success" role="button">zmień pokój</a>
+            <a th:href="@{/booking/status/__${booking.id}__}" class="btn btn-sm btn-success" role="button">zmień status</a>
+            <a th:href="@{/booking/guest/__${booking.id}__}" class="btn btn-sm btn-success" role="button">dodaj gościa</a>
+            <a th:href="@{/booking/delete/__${booking.id}__}" class="btn btn-sm btn-danger" role="button">usuń</a>
+        </p>
+    </div>
+</section>
+</body>
+</html>

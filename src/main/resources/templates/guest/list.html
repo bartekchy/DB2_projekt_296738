@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Lista Gości</title>
+</head>
+<body>
+<div layout:fragment="buttons">
+    <a th:href="@{/guest/create}" class="btn btn-sm btn-success" role="button">dodaj</a>
+    <a th:href="@{/}" class="btn btn-sm btn-primary" role="button">wróć</a>
+</div>
+<section layout:fragment="content">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Imie</th>
+            <th scope="col">Nazwisko</th>
+            <th scope="col">PESEL</th>
+            <th scope="col">Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="guest : ${guests}">
+            <th th:text="${guest.id}"></th>
+            <td th:text="${guest.forename}"></td>
+            <td th:text="${guest.surname}"></td>
+            <td th:text="${guest.pesel}"></td>
+            <td class="shrink">
+                <a th:href="@{/booking/create/__${guest.id}__}" class="btn btn-sm btn-success" role="button">rezerwacja</a>
+                <a th:href="@{/guest/update/__${guest.id}__}" class="btn btn-sm btn-success" role="button">zmień</a>
+                <a th:href="@{/guest/delete/__${guest.id}__}" class="btn btn-sm btn-danger" role="button">usuń</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</section>
+</body>
+</html>

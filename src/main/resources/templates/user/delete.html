@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Usuwanie pracownika</title>
+</head>
+<body>
+<h1 layout:fragment="title" th:text="| Czy na pewno chcesz usunac pracownika : ${user.surname}?|"></h1>
+<section layout:fragment="content">
+    <form action="#" th:action="@{/delete/__${user.id}__}" method="post">
+        <button type="submit" class="btn btn-success">Tak</button>
+        <div class="float-end">
+            <a th:href="@{/list}" class="btn btn-danger" role="button">Nie</a>
+        </div>
+    </form>
+</section>
+</body>
+</html>
